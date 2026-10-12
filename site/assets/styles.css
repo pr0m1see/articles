@@ -1,0 +1,88 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #24344b;
+  background: #f8fafc;
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.75;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: #1758bd; text-underline-offset: 0.2em; }
+a:focus-visible { outline: 3px solid #1758bd; outline-offset: 5px; }
+
+.site-header, .page, .site-footer {
+  width: min(100% - 48px, 800px);
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 27px;
+  border-bottom: 1px solid #e1e7ef;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #1758bd;
+  font-size: 23px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.brand span { font-size: 11px; letter-spacing: 0.14em; font-weight: 600; }
+.header-note { color: #627087; font-size: 13px; }
+.page { min-height: 65vh; padding-block: 64px 72px; }
+.eyebrow { margin: 0 0 16px; color: #1758bd; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; }
+h1 { margin: 0; color: #182b45; font-size: clamp(28px, 4.5vw, 40px); line-height: 1.45; letter-spacing: -0.025em; overflow-wrap: anywhere; }
+.intro { margin: 18px 0 0; color: #627087; font-size: 16px; }
+
+.empty-state {
+  margin-top: 48px;
+  padding: 48px 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e1e7ef;
+  border-radius: 14px;
+}
+
+.empty-mark { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; color: #1758bd; background: #edf3fd; font-size: 22px; }
+.empty-state h2 { margin: 18px 0 6px; color: #24344b; font-size: 19px; }
+.empty-state p { margin: 0; color: #627087; font-size: 14px; }
+.site-footer { padding-block: 24px; border-top: 1px solid #e1e7ef; color: #627087; font-size: 12px; }
+.article-page { padding-top: 48px; }
+.article-header { padding-bottom: 28px; margin-bottom: 32px; border-bottom: 1px solid #e1e7ef; }
+.prose { font-size: 17px; line-height: 1.95; overflow-wrap: anywhere; }
+.prose > :first-child { margin-top: 0; }
+.prose h2, .prose h3, .prose h4 { color: #182b45; margin: 1.8em 0 0.7em; line-height: 1.5; }
+.prose h2 { font-size: 1.45em; }
+.prose h3 { font-size: 1.2em; }
+.prose p, .prose ul, .prose ol, .prose figure { margin: 1.2em 0; }
+.prose ul, .prose ol { padding-left: 1.6em; }
+.prose li + li { margin-top: 0.35em; }
+.prose img { display: block; max-width: 100%; height: auto; margin: 24px auto; border-radius: 8px; }
+.prose figure { margin-inline: 0; }
+.prose figcaption { text-align: center; color: #627087; font-size: 0.85em; }
+.prose blockquote { margin: 24px 0; padding: 1px 22px; border-left: 3px solid #1758bd; background: #edf3fd; }
+.prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 0.9em; }
+.prose th, .prose td { padding: 10px 14px; border: 1px solid #d5deea; text-align: left; }
+.prose th { background: #edf3fd; }
+.prose code { padding: 0.15em 0.35em; border-radius: 4px; background: #eaf0f7; font-size: 0.85em; }
+.prose pre { overflow-x: auto; padding: 20px; border-radius: 8px; background: #eaf0f7; }
+.prose pre code { padding: 0; }
+.prose hr { margin: 36px 0; border: 0; border-top: 1px solid #d5deea; }
+.back-link { display: inline-block; margin-top: 40px; font-size: 14px; }
+
+@media (max-width: 520px) {
+  .site-header, .page, .site-footer { width: calc(100% - 36px); }
+  .site-header { padding-block: 20px; }
+  .page { padding-block: 40px 48px; }
+  .empty-state { margin-top: 32px; padding-block: 36px; }
+  .prose { font-size: 16px; }
+}

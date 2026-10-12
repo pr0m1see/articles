@@ -3,25 +3,60 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="飞函文章图文预览。">
-    <title>飞函文章</title>
+    <meta name="description" content="来自飞函的文章、实践与思考。">
+    <title>Articles · 飞函</title>
+    <link rel="preload" href="./assets/fonts/SourceSerif4Display-Semibold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="./assets/styles.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./" aria-label="飞函文章首页">飞函<span>ARTICLES</span></a>
-      <span class="header-note">图文阅读</span>
+      <div class="shell header-inner">
+        <a class="brand" href="./" aria-label="飞函文章首页"><img src="./assets/feihan-mark.svg" width="28" height="28" alt=""><span>Feihan</span></a>
+        <a class="header-link" href="https://feihan.im/">访问飞函 <span aria-hidden="true">↗</span></a>
+      </div>
     </header>
-    <main class="page">
-      <p class="eyebrow">飞函 · 文章预览</p>
-      <h1>每一篇，都值得好好读。</h1>
-      <p class="intro">在这里阅读飞函文章，查看完整正文与配图。</p>
-      <section class="empty-state" aria-labelledby="empty-title">
-        <span class="empty-mark" aria-hidden="true">文</span>
-        <h2 id="empty-title">文章正在准备中</h2>
-        <p>发布后的文章将在这里呈现。</p>
-      </section>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner">
+        <a href="./">飞函资源</a>
+        <a class="nav-current" href="./" aria-current="page">Articles</a>
+      </div>
+    </nav>
+    <main class="shell index-layout">
+      <aside class="sidebar" aria-label="内容分类">
+        <a class="category-link" href="./" aria-current="page"><img src="./assets/article-icon.svg" width="18" height="18" alt="">Articles</a>
+      </aside>
+      <div class="index-main">
+        <header class="index-heading">
+          <h1>Articles</h1>
+          <p>来自飞函的文章、实践与思考。<br>关于沟通、协作，以及更好的工作方式。</p>
+        </header>
+        <section class="featured" aria-labelledby="featured-title">
+          <div class="feature-leading" aria-hidden="true"></div>
+          <article class="resource-card">
+            <header class="card-header">
+              <span class="card-type"><img src="./assets/article-icon.svg" width="16" height="16" alt="">Article</span>
+              <span class="card-meta">即将更新</span>
+            </header>
+            <div class="card-content">
+              <div class="card-copy">
+                <h2 id="featured-title">第一篇文章，<br>即将与你见面。</h2>
+                <p>关于沟通与协作的好想法，<br>值得被认真记录，慢慢阅读。</p>
+                <span class="card-label"><img src="./assets/article-icon.svg" width="16" height="16" alt="">飞函文章</span>
+              </div>
+              <img class="card-illustration" src="./assets/reading-illustration.svg" width="240" height="270" alt="" aria-hidden="true">
+            </div>
+          </article>
+          <img class="feature-ribbons" src="./assets/ribbons.svg" width="312" height="396" alt="" aria-hidden="true">
+        </section>
+        <section class="article-collection" aria-labelledby="collection-title">
+          <div class="collection-heading">
+            <h2 id="collection-title">全部文章</h2>
+            <span>0 篇</span>
+          </div>
+          <p class="collection-empty">发布后的文章会在这里呈现。</p>
+        </section>
+      </div>
     </main>
-    <footer class="site-footer">飞函文章</footer>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
   </body>
 </html>

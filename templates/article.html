@@ -9,19 +9,24 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="../../" aria-label="飞函文章首页">飞函<span>ARTICLES</span></a>
-      <span class="header-note">图文阅读</span>
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.svg" width="28" height="28" alt=""><span>Feihan</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
     </header>
-    <main class="page article-page">
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
       <article>
         <header class="article-header">
-          <p class="eyebrow">飞函 · 文章预览</p>
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
           <h1>{{title}}</h1>
         </header>
         <div class="prose">{{body_html}}</div>
       </article>
       <a class="back-link" href="../../">← 返回文章首页</a>
     </main>
-    <footer class="site-footer">飞函文章</footer>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
   </body>
 </html>

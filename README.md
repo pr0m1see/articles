@@ -4,6 +4,8 @@
 
 本仓库保存公开的文章预览。GitHub Pages 使用 GitHub Actions 部署，每次推送到 `main` 后发布 `site/` 目录，也可以在 Actions 页面手动运行 **Deploy Pages**。
 
+界面参考 Claude Articles 的暖白配色、衬线标题、侧栏比例与文章卡片，保留飞函品牌，省略产品导航、订阅和复杂筛选。首页尚无文章时显示待发布状态。英文字体使用自托管的 Source Serif 4，许可见 `site/assets/fonts/LICENSE.md`。
+
 ## 目录
 
 ```text

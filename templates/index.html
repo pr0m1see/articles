@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="来自飞函的文章、实践与思考。">
+    <title>Articles · 飞函</title>
+    <link rel="preload" href="./assets/fonts/SourceSerif4Display-Semibold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="./assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./" aria-label="飞函文章首页"><img src="./assets/feihan-mark.svg" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="https://feihan.im/">访问飞函 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner">
+        <a href="./">飞函资源</a>
+        <a class="nav-current" href="./" aria-current="page">Articles</a>
+      </div>
+    </nav>
+    <main class="shell index-layout">
+      <aside class="sidebar" aria-label="内容分类">
+        <a class="category-link" href="./" aria-current="page"><img src="./assets/article-icon.svg" width="18" height="18" alt="">Articles</a>
+      </aside>
+      <div class="index-main">
+        <header class="index-heading">
+          <h1>Articles</h1>
+          <p>来自飞函的文章、实践与思考。<br>关于沟通、协作，以及更好的工作方式。</p>
+        </header>
+        <section class="featured" aria-label="最新文章">
+          <div class="feature-leading" aria-hidden="true"></div>
+          {{featured_html}}
+          <img class="feature-ribbons" src="./assets/ribbons.svg" width="312" height="396" alt="" aria-hidden="true">
+        </section>
+        <section class="article-collection" aria-labelledby="collection-title">
+          <div class="collection-heading">
+            <h2 id="collection-title">全部文章</h2>
+            <span>{{article_count}} 篇</span>
+          </div>
+          <div class="article-grid">{{article_list_html}}</div>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>

@@ -18,6 +18,8 @@ site/
     assets/*.webp          # 该版本文章的预览配图
 templates/
   article.html             # 文章导出模板，不直接部署
+  index.html               # 自动生成首页，保留现有版式
+  card.html                # 首页文章卡片模板
 .github/workflows/
   pages.yml                # 静态文件部署流程
 ```
@@ -31,6 +33,8 @@ templates/
 - `{{body_html}}`：Markdown 渲染后的正文 HTML，不重复包含页面主标题；图片路径相对文章目录，例如 `./assets/image-01.webp`。
 
 页面保存为 `site/a/<revision_id>/index.html`，对应 `/articles/a/<revision_id>/`。同一文章版本使用固定链接。模板中的首页和样式使用相对路径，以支持 GitHub Pages 的 `/articles/` 子路径。
+
+Content Bot 导出器还读取 `templates/index.html` 和 `templates/card.html`，按 `site/articles.json` 中的文章目录重新生成首页。新文章、WebP 配图、目录和首页在一次 Git 提交中更新；旧文章保留。三个模板必须一起部署后才能启用自动上传。目录中的时间为冻结时间，卡片按 UTC+8 显示日期。
 
 预览图片计划使用保留原尺寸、质量参数 85 的 WebP；原始 Bundle 及原图继续保留在 Content Bot 中。文章预览持续保留，不做滚动清理。
 

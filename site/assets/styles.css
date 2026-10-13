@@ -57,7 +57,8 @@ img { max-width: 100%; }
 
 .featured { display: grid; grid-template-columns: 28px minmax(0, 2.3fr) minmax(0, 1fr); align-items: stretch; gap: 14px; margin-top: 96px; }
 .feature-leading { background: linear-gradient(to right, #d1cfc5 0 2px, transparent 2px 6px, #d1cfc5 6px 9px, transparent 9px 22px, #d1cfc5 22px 28px); }
-.resource-card { min-width: 0; min-height: 396px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.resource-card { min-width: 0; min-height: 396px; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--card); color: var(--ink); text-decoration: none; }
+a.resource-card:hover { border-color: #c2c0b6; }
 .card-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding: 10px 24px; border-bottom: 1px solid var(--line); font-size: 12px; }
 .card-type, .card-label { display: inline-flex; align-items: center; gap: 8px; color: #4d4c48; }
 .card-meta { color: var(--muted); white-space: nowrap; }
@@ -73,6 +74,13 @@ img { max-width: 100%; }
 .collection-heading h2 { margin: 0; font-size: 15px; font-weight: 400; }
 .collection-heading > span { color: var(--muted); font-size: 13px; }
 .collection-empty { margin: 32px 0 0; color: var(--muted); font-size: 14px; }
+.article-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+.article-grid .resource-card { min-height: 320px; }
+.article-grid .card-content { min-height: 274px; }
+.article-grid .card-copy { width: 78%; padding: 24px; }
+.article-grid .card-copy h2 { font-size: 25px; }
+.article-grid .card-illustration { width: 26%; right: 16px; bottom: 16px; }
+a.resource-card .card-copy h2, a.resource-card .card-copy > p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
 .site-footer { border-top: 1px solid var(--line); color: var(--muted); }
 .footer-inner { display: flex; justify-content: space-between; padding-block: 26px; font-size: 12px; }
 
@@ -123,6 +131,7 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 599px) {
+  .article-grid { grid-template-columns: minmax(0, 1fr); }
   .shell { width: calc(100% - 40px); }
   .header-inner { height: 72px; }
   .brand span { font-size: 29px; }

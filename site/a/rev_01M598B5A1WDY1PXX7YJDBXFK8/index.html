@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="以出差设备遗失为场景，梳理企业评估设备授权、远程数据擦除和处置记录的关键问题，并说明如何验证飞函相关能力的实际适用范围。">
+    <title>出差设备遗失后，企业如何评估远程数据擦除与设备授权机制 · 飞函文章</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  <meta name="content-bot-revision" content="rev_01M598B5A1WDY1PXX7YJDBXFK8">
+<meta name="content-bot-fingerprint" content="cbf-v2:sha256:9365c189a6175bec085eafcbb44d0173586355df2751ba93fbb79195df7da4ff">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.png" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
+      <article>
+        <header class="article-header">
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
+          <h1>出差设备遗失后，企业如何评估远程数据擦除与设备授权机制</h1>
+        </header>
+        <div class="prose"><p>员工在出差途中发现工作手机遗失。手机里可能有尚未同步的文件、聊天记录和仍然有效的登录状态。此时，管理员要回答的不是“有没有擦除按钮”，而是：这台设备还能访问什么、哪些数据留在本地、现在能立即阻断哪些入口，以及擦除指令何时真正执行。</p>
+<h2>先阻断访问，再判断擦除范围</h2>
+<p>接到报告后，企业应先核对人员、设备和账号，记录遗失时间与最近一次在线时间，并按既定流程撤销该设备的授权。设备授权机制的评估重点，是能否识别具体终端、单独收回其访问资格，以及收回后其他正常设备能否继续工作。若只能停用整个账号，处置范围可能过大；若只修改密码，却未核实已有会话和本地数据，风险仍可能存在。</p>
+<p>远程数据擦除则要问得更细：擦除的是协作应用内的数据，还是整台设备的数据？指令由谁发起、谁复核？设备离线时会发生什么，重新联网后如何确认执行结果？“指令已下发”与“数据已清除”是两个不同的状态，处置记录应明确区分。对于已经下载到其他应用、另存到外部存储或被拍摄的内容，也不能假定一次远程擦除能够收回。</p>
+<p><img src="./assets/lost_device_response.webp" alt="设备遗失后从确认、撤权、擦除到核验的处置流程"></p>
+<h2>用一次演练检验机制是否可用</h2>
+<p>采购或配置时，可以安排一台测试设备模拟遗失：先让它离线，撤销授权并发起擦除；再恢复网络，观察访问是否被拒绝、擦除是否执行、管理员能否看到相应状态。演练还应覆盖误报后的处理，例如设备找回后怎样重新授权，以及如何避免误擦个人数据。具体支持范围和操作路径，应以企业实际使用的版本、终端系统和部署配置为准。</p>
+<p>飞函<a href="https://feihanim.cn/product/security">安全能力页面</a>列有设备授权验证和远程数据擦除。企业评估时，可把这两项能力放进上述演练，而不是仅依据功能名称作判断：确认授权回收作用于哪些终端，擦除覆盖哪些应用数据，离线设备如何反馈执行状态，并核对管理员权限与处置记录。</p>
+<p>设备遗失后的处置效果，取决于平时是否建立设备台账、权限分配和报告流程。把“发现遗失—确认设备—收回授权—发起擦除—核验结果”落实到具体负责人，才能在紧急情况下知道下一步由谁执行、结果由谁确认。</p>
+</div>
+      </article>
+      <a class="back-link" href="../../">← 返回文章首页</a>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>

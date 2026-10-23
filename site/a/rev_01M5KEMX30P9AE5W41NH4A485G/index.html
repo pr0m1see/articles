@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="以薪酬核算、复核和发放为例，说明人资如何分别设置通讯录可见范围与文件共享权限，并在岗位变动时核查和回收访问权限。">
+    <title>薪酬资料协作：通讯录与文件权限如何配合 · 飞函文章</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  <meta name="content-bot-revision" content="rev_01M5KEMX30P9AE5W41NH4A485G">
+<meta name="content-bot-fingerprint" content="cbf-v2:sha256:134adf23c6bceb76e9c3cc79904fadbd3d3175e3cdf1243ee01053d928b86592">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.png" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
+      <article>
+        <header class="article-header">
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
+          <h1>薪酬资料协作：通讯录与文件权限如何配合</h1>
+        </header>
+        <div class="prose"><p>月末核薪时，人资专员需要把员工明细交给指定复核人，把汇总结果交给审批人，再将最终版本交给发放经办人。几份资料可能在同一轮协作中流转，但每个人需要看到的对象和内容并不相同。若只限制通讯录、却把文件共享给整个部门，资料仍可能被无关人员打开；若文件权限收得很紧、协作对象却难以找到，核对和交接又容易转向线下。</p>
+<h2>先分清两道权限</h2>
+<p>**通讯录可见范围解决“能找到谁”。**人资可以按实际协作关系，让经办人看见需要联系的复核人、审批人和交接人。可见范围不宜直接等同于整个人资部门，更不应因为某人能被搜索到，就默认他可以查看薪酬文件。</p>
+<p>**文件共享权限解决“能看哪份资料”。**员工明细、审批汇总、发放版本应分别确定接收人。设置权限时，以具体岗位和任务为依据，核对共享对象、资料版本和使用期限。部门共享适合确需部门共同处理的材料；包含个人薪酬明细的文件，更适合逐一确认实际参与者。</p>
+<p><img src="./assets/permission_boundary.webp" alt="通讯录可见范围与薪酬文件共享范围分层设置的示意图"></p>
+<p>这两道权限需要配合，但不能互相代替。一个可执行的检查方法是：先列出每个环节的负责人与交接对象，再逐份写清“谁需要联系谁、谁需要打开哪份文件”。例如，复核人可以与核算专员沟通并查看待复核明细；审批人若只需确认总额，就不必因此获得员工明细的访问权。</p>
+<h2>把权限检查放进交接动作</h2>
+<p>在飞函中，通讯录可见范围与网盘共享权限可以作为两个独立的配置点：前者围绕协作对象设置，后者可按成员或部门分配。落地时，先用岗位清单确定可见对象，再按文件用途配置共享范围，并用对应岗位的账号验证能否找到交接人、能否打开应看的文件，以及是否无法打开无关资料。</p>
+<p>薪酬周期结束后，还要检查临时参与复核、代班审批或岗位调整的人员是否仍有访问权限。共享范围变化时，同步核对通讯录中的协作关系；人员退出流程时，及时回收不再需要的文件权限。这样，日常沟通有明确入口，敏感资料的访问也能跟着实际职责变化。</p>
+</div>
+      </article>
+      <a class="back-link" href="../../">← 返回文章首页</a>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>

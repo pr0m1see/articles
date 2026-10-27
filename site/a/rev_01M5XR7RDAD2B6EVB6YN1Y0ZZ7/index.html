@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="以现场工程师上传检测视频和图纸为例，说明断点续传如何减少重复传输，并让资料交接、远端复核和版本确认更顺畅。">
+    <title>大文件传到一半网络中断，断点续传能改善哪些现场协作环节 · 飞函文章</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  <meta name="content-bot-revision" content="rev_01M5XR7RDAD2B6EVB6YN1Y0ZZ7">
+<meta name="content-bot-fingerprint" content="cbf-v2:sha256:18fe0883d107e26786817bb5cf11fed7b9ba248486e0e8ff2a987a612c9b0a37">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.png" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
+      <article>
+        <header class="article-header">
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
+          <h1>大文件传到一半网络中断，断点续传能改善哪些现场协作环节</h1>
+        </header>
+        <div class="prose"><p>车间工程师刚录完设备异常视频，还要把图纸和检测记录交给远端专家。文件传到一半，现场网络短暂中断。如果恢复连接后只能从头上传，工程师得重新等待，专家也只能根据零散描述先作判断。受影响的不只是一次传输，还包括后续的资料交接与复核。</p>
+<h2>从中断处继续，先解决重复等待</h2>
+<p>断点续传的直接价值，是在传输任务能够恢复、文件未发生变化的前提下，继续传送尚未完成的部分。对网络时断时续的现场，它减少了反复传送已有内容的时间和带宽消耗，也降低了人员守着进度条、失败后重新操作的负担。</p>
+<p>它不能保证网络立刻恢复，也不意味着未传完的文件可以直接用于判断。协作流程仍应以<strong>上传完成并确认文件可用</strong>为交接节点，避免接收方把不完整资料当作最终版本。</p>
+<h2>哪些协作环节会更顺畅</h2>
+<p><strong>资料采集后的上交。</strong> 检测视频、图纸包或日志归档一旦较大，现场人员可能需要在移动网络与厂区网络之间切换。可恢复的传输任务让他们在连接恢复后继续提交资料，减少因重复上传而耽误下一项现场工作。</p>
+<p><strong>远端专家的复核。</strong> 专家需要看到完整资料，才能对照现场描述检查细节。传输中断后的重复等待缩短，资料到齐的时间就更可预期；群内也可以明确告知“上传中”“已完成”“待复核”，减少反复询问文件是否到齐。</p>
+<p><strong>多岗位之间的交接。</strong> 维修、质量和项目负责人可能接连使用同一批材料。交接时应确认文件名称、版本、上传完成状态和接收范围，避免各自保存一份来历不明的副本。断点续传改善的是资料抵达的过程，清楚的交接规则则让资料抵达后能被正确使用。</p>
+<p><img src="./assets/transfer_workflow.webp" alt="现场资料采集、断点续传与远端复核的协作流程"></p>
+<h2>把传输能力放进可管理的资料流程</h2>
+<p>飞函<a href="https://feihanim.cn/product/drive">网盘功能页</a>列有批量及断点续传、共享空间和按成员或部门分配共享权限。对上述场景，可以先约定资料放入哪个共享空间、由谁上传、哪些岗位有权查看，再在上传完成后通知相关人员复核。这样，网络中断后的续传与文件到齐后的共享，能够接在同一条协作流程里。</p>
+<p>落地时还要按实际部署和使用版本确认功能范围，并用一次接近现场网络条件的传输演练检查恢复、完成提示和文件核对步骤。衡量效果也很具体：中断后是否需要重传、资料何时真正可用、接收人是否拿到了正确版本。</p>
+</div>
+      </article>
+      <a class="back-link" href="../../">← 返回文章首页</a>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>

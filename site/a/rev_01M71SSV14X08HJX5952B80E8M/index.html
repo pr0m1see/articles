@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="以工单提醒为例，说明如何通过事件分级、合并推送、明确责任人和定期复盘，让机器人消息服务业务处置，同时保留群聊中的人工沟通空间。">
+    <title>业务提醒进群，如何不淹没人工沟通 · 飞函文章</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  <meta name="content-bot-revision" content="rev_01M71SSV14X08HJX5952B80E8M">
+<meta name="content-bot-fingerprint" content="cbf-v2:sha256:349b699cdd0a5026f854b6e998b588a4e153a3cf71467414d01e0d9497427ec1">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.png" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
+      <article>
+        <header class="article-header">
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
+          <h1>业务提醒进群，如何不淹没人工沟通</h1>
+        </header>
+        <div class="prose"><p>上午十点，项目群正在确认一个客户问题的处理方案。工单系统连续推送状态变更、超时预警和字段更新，几位同事的讨论被挤到屏幕上方。等真正需要人接手的提醒出现时，群里已经很难判断哪一条值得立即回应。</p>
+<p>业务系统接入协同平台后，提醒能更快到达人。但如果每次数据变化都生成一条群消息，机器人就会占据原本用于判断、协调和决策的空间。治理的关键，是先决定<strong>什么事值得打断谁</strong>，再决定消息怎样发。</p>
+<h2>先按处置动作划分提醒</h2>
+<p>可以从接收者的下一步动作倒推消息等级，而不是直接沿用业务系统的事件名称：</p>
+<ul>
+<li><strong>必须立即处理</strong>：例如关键工单超过约定时限且尚无负责人。推送到明确的责任人或处置群，写清对象、影响、截止时间和处理入口。</li>
+<li><strong>需要关注，但不必立刻回复</strong>：例如工单即将到期。按负责人汇总，在合适的时间发送，避免每次字段变化都提醒一次。</li>
+<li><strong>只供查询</strong>：例如普通状态流转。保留在业务系统的记录中，供需要的人主动查看。</li>
+</ul>
+<p>同一事件在不同阶段也可能改变等级。已经由负责人接手的工单，后续进展通常不必反复通知整个项目群；只有责任转移、处理受阻或风险升级时，才重新提醒相关人员。</p>
+<p><img src="./assets/reminder_flow.webp" alt="业务事件按处置需要分为即时提醒、汇总提醒和留存查询三条路径"></p>
+<h2>给机器人设定发送边界</h2>
+<p>先列出业务系统准备推送的事件，再逐项确认接收范围、触发条件和去重规则。一个实用原则是：<strong>一条提醒对应一个需要完成的动作</strong>。短时间内连续发生的同类变化，可以合并为一条摘要；同一问题重复触发时，更新原有处理线索比不断追加新消息更便于跟进。</p>
+<p>提醒内容也应尽量短：发生了什么、谁负责、何时需要处理、到哪里查看详情。完整日志留在业务系统，群消息提供足够的判断依据和入口即可。这样既减少刷屏，也避免把复杂业务记录拆成难以追踪的聊天片段。</p>
+<h2>让提醒回到人的协作流程</h2>
+<p>机器人负责提示事件，人工负责判断和协同。设计推送时，应同时约定谁确认接收、谁推进处理，以及无人响应时如何转交。群里一旦开始讨论，后续机器人消息应尽量围绕同一问题汇总，给人的提问、补充和决策留出连续的上下文。</p>
+<p>飞函的即时通讯提供自定义机器人等能力，可作为外部应用提醒进入协同场景的入口。企业在规划接入时，仍需由业务系统和管理规则决定事件筛选、发送频率、接收对象与处置责任；不能把“能够推送”当成“应该推送”。对于重要的人工作业沟通，还可以结合重要消息、聊天分组等现有能力，帮助成员区分需要优先关注的内容。</p>
+<p>上线后，定期查看重复提醒、无人响应的提醒和被人工反复追问的提醒。如果一类消息长期没人处理，就检查它是否真的需要进群；如果关键事件仍被漏看，就调整接收人、等级或表达方式。衡量接入效果，最终要看问题是否更快被正确的人接住，以及群聊是否仍能支持清晰的人工沟通。</p>
+</div>
+      </article>
+      <a class="back-link" href="../../">← 返回文章首页</a>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>

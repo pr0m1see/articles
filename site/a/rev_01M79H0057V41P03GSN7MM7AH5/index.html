@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="重大故障期间，值班团队需要让每个人识别当前有效的处置方案。文章提出用统一的方案消息、明确的版本与生效范围、旧方案失效提示和执行回执，减少消息更新造成的误操作。">
+    <title>重大故障处置：如何标出当前有效方案 · 飞函文章</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  <meta name="content-bot-revision" content="rev_01M79H0057V41P03GSN7MM7AH5">
+<meta name="content-bot-fingerprint" content="cbf-v2:sha256:b23784d0f573923be037633606e101ef4ece276e6b7d670f8a8046c129220931">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.png" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
+      <article>
+        <header class="article-header">
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
+          <h1>重大故障处置：如何标出当前有效方案</h1>
+        </header>
+        <div class="prose"><p>凌晨的故障群里，排查结论每隔几分钟就会变化。有人还在按第一版方案重启服务，另一组人已根据新证据改为回滚。两条消息各有上下文，却没有一条明确告诉所有值班人员：<strong>现在该执行哪一版</strong>。</p>
+<p>重大故障中，消息更新很快。真正危险的是旧方案仍留在聊天记录里，后来加入的同事可能从搜索结果或转发内容中读到它，并误以为它仍然有效。值班团队需要把“讨论过程”和“当前指令”区分开。</p>
+<h2>用一条方案消息承载当前指令</h2>
+<p>每次处置方向发生变化，由指定的处置负责人发布一条完整的新方案消息，不让执行人员从多段聊天中自行拼接。消息至少写清五件事：</p>
+<ul>
+<li><strong>版本与发布时间</strong>：例如“处置方案 V3，02:18 发布”。版本用于识别先后，时间用于核对交接时点。</li>
+<li><strong>状态与生效范围</strong>：明确写“当前有效”，并说明适用的服务、环境或机房。</li>
+<li><strong>执行动作与负责人</strong>：按顺序列出动作、执行人和需要等待的确认，避免多人同时操作同一对象。</li>
+<li><strong>停止条件与回退动作</strong>：出现哪些现象就暂停，执行失败后由谁决定回退。</li>
+<li><strong>替代关系</strong>：写明“V3 替代 V2；V2 停止执行”，让旧方案的状态没有歧义。</li>
+</ul>
+<p>方案消息可以简短，但不能只写“按刚才说的做”。执行人员需要在一条消息里看见足以判断自己是否该行动的信息。</p>
+<h2>更新方案时，同时处理旧方案</h2>
+<p>发布新方案前，负责人先确认上一版哪些步骤已经执行、哪些尚未开始。新消息发出后，在原方案讨论位置补充失效提示，并在故障群中再次指向新版本。已经开始执行旧步骤的人，应单独确认是否继续、暂停或回退；群里出现新消息，并不等于现场动作已经切换。</p>
+<p>交接班时也以当前方案消息为入口：接班人先复述版本、适用范围和待执行动作，再接收尚未解决的问题。这样，搜索到的历史记录可以用于追溯判断过程，却不会代替当下的执行指令。</p>
+<p><img src="./assets/plan_transition.webp" alt="旧方案失效、新方案生效并由执行人员确认的流程示意"></p>
+<h2>让协同工具承接这套约定</h2>
+<p>在飞函故障群中，团队可以利用重要消息帮助成员找到当前方案，用全局搜索回看版本变化，并结合已读回执检查关键信息是否触达。工具能帮助消息被看见，但“谁有权发布新方案、何时宣布旧方案失效、执行人如何回报结果”仍须由值班流程事先约定。</p>
+<p>一次方案更新的闭环可以很具体：负责人发布新版本，相关执行人回复“已收到 V3，负责数据库侧检查”，完成后回报结果；负责人据此更新下一步。故障结束后，再按版本顺序复盘哪些判断改变了处置方向。消息越密集，越要让当前有效的那条指令清晰可辨。</p>
+</div>
+      </article>
+      <a class="back-link" href="../../">← 返回文章首页</a>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>

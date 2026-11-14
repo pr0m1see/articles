@@ -3,8 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <title>飞函 · 文章发布状态</title>
+    <script>
+      (() => {
+        let saved;
+        try {
+          saved = localStorage.getItem("feihan-status-theme");
+        } catch {}
+        document.documentElement.dataset.theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+      })();
+    </script>
     <style>
       :root {
         font-family:
@@ -15,13 +29,61 @@
           "PingFang SC",
           "Microsoft YaHei",
           sans-serif;
-        color: #25332e;
-        background: #f7f8f6;
+        color: var(--text);
+        background: var(--page);
         font-synthesis: none;
         --green: #3b9d76;
         --yellow: #e0ac43;
         --red: #d76a64;
         --gray: #e5e8e4;
+        --page: #f7f8f6;
+        --surface: #fff;
+        --surface-subtle: #fcfdfb;
+        --text: #25332e;
+        --muted: #7b857e;
+        --secondary-text: #4a5c51;
+        --border: #e0e5df;
+        --divider: #eff1ed;
+        --accent: #367b5d;
+        --focus: #253e30;
+        --green-text: #348764;
+        --yellow-text: #af7d1a;
+        --red-text: #b65550;
+        --warning-border: #eedcb2;
+        --warning-bg: #fcf7ea;
+        --warning-text: #8f712f;
+        --card-shadow: #263e2c03;
+        --popover: #faf9f6;
+        --popover-summary: #efefea;
+        --popover-shadow: 0 3px 7px #00000012, 0 12px 30px #00000014;
+        color-scheme: light;
+      }
+      :root[data-theme="dark"] {
+        --page: #181b19;
+        --surface: #232723;
+        --surface-subtle: #292e29;
+        --text: #e8eee9;
+        --muted: #a5afa7;
+        --secondary-text: #c1cec3;
+        --border: #414941;
+        --divider: #343c35;
+        --accent: #9ed2af;
+        --focus: #bedec8;
+        --green: #64b991;
+        --yellow: #ddb15a;
+        --red: #de8077;
+        --gray: #414a42;
+        --green-text: #8dd1ac;
+        --yellow-text: #e8c77f;
+        --red-text: #eda59c;
+        --warning-border: #67552e;
+        --warning-bg: #332d1e;
+        --warning-text: #e8c77f;
+        --card-shadow: #00000018;
+        --popover: #292e29;
+        --popover-summary: #343c34;
+        --popover-shadow: 0 8px 32px #00000055;
+        color-scheme: dark;
       }
       * {
         box-sizing: border-box;
@@ -45,15 +107,10 @@
         margin-bottom: 46px;
       }
       .mark {
-        display: grid;
-        place-items: center;
+        display: block;
         width: 43px;
         height: 43px;
-        border-radius: 12px;
-        background: #254b3d;
-        color: white;
-        font-size: 21px;
-        font-weight: 600;
+        object-fit: contain;
       }
       .brand {
         font-size: 19px;
@@ -62,12 +119,53 @@
       }
       .home-link {
         text-decoration: none;
-        margin-left: auto;
-        color: #79857c;
+        color: var(--muted);
         font-size: 12px;
-        border: 1px solid #dce3dc;
+        border: 1px solid var(--border);
         border-radius: 20px;
         padding: 6px 11px;
+      }
+      .header-actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .theme-toggle,
+      .popover-close {
+        display: grid;
+        place-items: center;
+        padding: 0;
+        color: var(--text);
+        cursor: pointer;
+      }
+      .theme-toggle {
+        width: 34px;
+        height: 32px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .theme-toggle:hover,
+      .popover-close:hover {
+        background: var(--surface-subtle);
+      }
+      .theme-toggle:focus-visible,
+      .popover-close:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+      }
+      .theme-toggle svg,
+      .popover-close svg {
+        width: 17px;
+        height: 17px;
+      }
+      .theme-toggle .sun,
+      [data-theme="dark"] .theme-toggle .moon {
+        display: none;
+      }
+      [data-theme="dark"] .theme-toggle .sun {
+        display: block;
       }
       h1 {
         font-size: 32px;
@@ -76,7 +174,7 @@
         margin: 0 0 12px;
       }
       .subtitle {
-        color: #7b857e;
+        color: var(--muted);
         font-size: 14px;
         line-height: 1.8;
         margin: 0;
@@ -86,19 +184,19 @@
       }
       .update {
         margin: 20px 0 0;
-        color: #7b857e;
+        color: var(--muted);
         font-size: 12px;
         font-variant-numeric: tabular-nums;
       }
       .update strong {
-        color: #4a5c51;
+        color: var(--secondary-text);
         font-weight: 500;
       }
       .card {
-        background: #fff;
-        border: 1px solid #e0e5df;
+        background: var(--surface);
+        border: 1px solid var(--border);
         border-radius: 13px;
-        box-shadow: 0 2px 8px #263e2c03;
+        box-shadow: 0 2px 8px var(--card-shadow);
       }
       .card-title {
         display: flex;
@@ -112,7 +210,7 @@
       .range {
         font-size: 11px;
         font-weight: 400;
-        color: #8a938d;
+        color: var(--muted);
         font-variant-numeric: tabular-nums;
       }
       .scroll {
@@ -128,7 +226,7 @@
         align-items: center;
         gap: 20px;
         padding: 23px 0;
-        border-bottom: 1px solid #eff1ed;
+        border-bottom: 1px solid var(--divider);
       }
       .platform {
         display: flex;
@@ -137,7 +235,7 @@
         position: sticky;
         left: 0;
         z-index: 2;
-        background: white;
+        background: var(--surface);
         font-size: 14px;
         font-weight: 550;
       }
@@ -160,7 +258,7 @@
       }
       .day:focus-visible,
       .day.selected {
-        outline: 2px solid #253e30;
+        outline: 2px solid var(--focus);
         outline-offset: 2px;
         position: relative;
         z-index: 1;
@@ -184,22 +282,22 @@
         white-space: nowrap;
       }
       .label.success {
-        color: #348764;
+        color: var(--green-text);
       }
       .label.recovered {
-        color: #af7d1a;
+        color: var(--yellow-text);
       }
       .label.unsuccessful {
-        color: #b65550;
+        color: var(--red-text);
       }
       .label.no_task {
-        color: #90988f;
+        color: var(--muted);
       }
       .axis {
         display: flex;
         justify-content: space-between;
         margin: 14px 108px 19px 120px;
-        color: #919a92;
+        color: var(--muted);
         font-size: 11px;
       }
       .legend {
@@ -207,9 +305,9 @@
         flex-wrap: wrap;
         gap: 13px 23px;
         padding: 20px 25px;
-        border-top: 1px solid #eff1ed;
+        border-top: 1px solid var(--divider);
         font-size: 12px;
-        color: #748077;
+        color: var(--muted);
       }
       .legend span {
         display: flex;
@@ -223,37 +321,108 @@
         display: inline-block;
         flex: none;
       }
-      .details {
-        min-height: 106px;
-        padding: 22px 25px;
-        border-top: 1px solid #eff1ed;
-        background: #fcfdfb;
-        border-radius: 0 0 13px 13px;
+      .status-popover {
+        position: fixed;
+        z-index: 100;
+        width: min(360px, calc(100% - 32px));
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: var(--popover);
+        box-shadow: var(--popover-shadow);
       }
-      .details p {
-        margin: 6px 0;
-        color: #7b857e;
+      .status-popover::before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        left: calc(var(--arrow-x) - 7px);
+        width: 12px;
+        height: 12px;
+        background: var(--popover);
+        border-top: 1px solid var(--border);
+        border-left: 1px solid var(--border);
+        transform: rotate(45deg);
+      }
+      .status-popover[data-placement="top"]::before {
+        top: auto;
+        bottom: -7px;
+        transform: rotate(225deg);
+      }
+      .status-popover::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -14px;
+        height: 14px;
+      }
+      .status-popover[data-placement="top"]::after {
+        top: auto;
+        bottom: -14px;
+      }
+      .popover-inner {
+        padding: 20px;
+        max-height: calc(100vh - 64px);
+        overflow: auto;
+      }
+      .popover-heading {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 17px;
+      }
+      .popover-date {
+        font-size: 16px;
+        font-weight: 650;
+      }
+      .popover-platform {
         font-size: 12px;
-        line-height: 1.7;
+        color: var(--muted);
+        margin-top: 5px;
       }
-      .detail-title {
+      .popover-close {
+        width: 26px;
+        height: 26px;
+        border: 0;
+        border-radius: 5px;
+        background: transparent;
+      }
+      .popover-summary {
         display: flex;
         align-items: center;
         gap: 9px;
-        font-size: 13px;
-        font-weight: 550;
+        padding: 12px;
+        background: var(--popover-summary);
+        border-radius: 4px;
       }
-      .details a {
-        display: inline-block;
-        color: #367b5d;
+      .popover-status {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .popover-attempts {
+        margin-left: auto;
+        font-size: 11px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .popover-description {
+        margin: 14px 0 0;
+        color: var(--muted);
         font-size: 12px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+      }
+      .popover-link {
+        display: inline-block;
+        color: var(--accent);
+        font-size: 13px;
         text-underline-offset: 3px;
-        margin-top: 7px;
+        margin-top: 16px;
       }
       .warning {
-        border: 1px solid #eedcb2;
-        background: #fcf7ea;
-        color: #8f712f;
+        border: 1px solid var(--warning-border);
+        background: var(--warning-bg);
+        color: var(--warning-text);
         border-radius: 8px;
         font-size: 12px;
         line-height: 1.7;
@@ -262,7 +431,7 @@
       }
       .empty {
         padding: 35px 0;
-        color: #8a938d;
+        color: var(--muted);
         font-size: 13px;
         text-align: center;
       }
@@ -271,7 +440,7 @@
         justify-content: space-between;
         gap: 18px;
         margin: 21px 2px;
-        color: #929c93;
+        color: var(--muted);
         font-size: 11px;
         line-height: 1.8;
       }
@@ -304,9 +473,6 @@
           padding: 18px 16px;
           gap: 13px 18px;
         }
-        .details {
-          padding: 20px 16px;
-        }
         .foot {
           flex-direction: column;
           gap: 2px;
@@ -317,8 +483,44 @@
   <body data-status-source="./data.json">
     <main>
       <header>
-        <span class="mark" aria-hidden="true">飞</span><span class="brand">飞函</span
-        ><a class="home-link" href="../">文章首页 ↗</a>
+        <img class="mark" src="../assets/feihan-mark.png" width="43" height="43" alt="" /><span
+          class="brand"
+          >飞函</span
+        >
+        <div class="header-actions">
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="切换为深色主题"
+            aria-pressed="false"
+          >
+            <svg
+              class="moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              aria-hidden="true"
+            >
+              <path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z" />
+            </svg>
+            <svg
+              class="sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"
+              />
+            </svg>
+          </button>
+          <a class="home-link" href="../">文章首页 ↗</a>
+        </div>
       </header>
       <section class="intro">
         <h1>文章发布状态</h1>
@@ -339,15 +541,40 @@
           ><span><i class="swatch unsuccessful"></i>未确认成功</span
           ><span><i class="swatch no_task"></i>无任务</span>
         </div>
-        <div class="details" id="details" aria-live="polite">
-          <p>将鼠标移到色块上，或点击查看当天的发布详情。</p>
-        </div>
       </section>
       <footer class="foot">
         <span>成功以发布验证和必要的发布后复审结果为准。</span
         ><span>补发成功后，原日期的记录将在下次更新时修正。</span>
       </footer>
     </main>
+    <aside
+      class="status-popover"
+      id="status-popover"
+      role="dialog"
+      aria-labelledby="popover-platform popover-title"
+      hidden
+    >
+      <div class="popover-inner">
+        <div class="popover-heading">
+          <div>
+            <div class="popover-date" id="popover-title"></div>
+            <div class="popover-platform" id="popover-platform"></div>
+          </div>
+          <button class="popover-close" id="popover-close" type="button" aria-label="关闭发布详情">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              aria-hidden="true"
+            >
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+        <div id="popover-content"></div>
+      </div>
+    </aside>
     <script>
       const labels = {
         success: "首次成功",
@@ -358,9 +585,29 @@
       const chart = document.getElementById("chart");
       const scroller = document.querySelector(".scroll");
       const warning = document.getElementById("warning");
-      const details = document.getElementById("details");
+      const popover = document.getElementById("status-popover");
+      const popoverContent = document.getElementById("popover-content");
+      const themeToggle = document.getElementById("theme-toggle");
       let generatedAt = null;
       let selected = null;
+      let pinned = false;
+      let closeTimer;
+      function syncThemeToggle() {
+        const dark = document.documentElement.dataset.theme === "dark";
+        const label = dark ? "切换为浅色主题" : "切换为深色主题";
+        themeToggle.setAttribute("aria-label", label);
+        themeToggle.setAttribute("aria-pressed", String(dark));
+        themeToggle.title = label;
+      }
+      themeToggle.addEventListener("click", () => {
+        const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = theme;
+        try {
+          localStorage.setItem("feihan-status-theme", theme);
+        } catch {}
+        syncThemeToggle();
+      });
+      syncThemeToggle();
       function showLatestDates() {
         if (window.matchMedia("(max-width: 600px)").matches) {
           scroller.scrollLeft = scroller.scrollWidth;
@@ -372,40 +619,124 @@
         if (className) node.className = className;
         return node;
       }
-      function showDay(platform, day, button) {
-        if (selected) selected.classList.remove("selected");
+      function hidePopover() {
+        clearTimeout(closeTimer);
+        popover.hidden = true;
+        if (selected) {
+          selected.classList.remove("selected");
+          selected.setAttribute("aria-expanded", "false");
+        }
+        selected = null;
+        pinned = false;
+      }
+      function positionPopover() {
+        const anchor = selected.getBoundingClientRect();
+        const width = popover.offsetWidth;
+        const height = popover.offsetHeight;
+        const viewportWidth = document.documentElement.clientWidth;
+        const margin = 16;
+        const gap = 12;
+        const center = anchor.left + anchor.width / 2;
+        const left = Math.max(margin, Math.min(center - width / 2, viewportWidth - width - margin));
+        const below = innerHeight - anchor.bottom;
+        const placement = below >= height + gap + margin || below >= anchor.top ? "bottom" : "top";
+        const top = placement === "bottom" ? anchor.bottom + gap : anchor.top - height - gap;
+        popover.style.left = left + "px";
+        popover.style.top = Math.max(margin, Math.min(top, innerHeight - height - margin)) + "px";
+        popover.style.setProperty(
+          "--arrow-x",
+          Math.max(20, Math.min(center - left, width - 20)) + "px",
+        );
+        popover.dataset.placement = placement;
+      }
+      function schedulePopoverClose() {
+        clearTimeout(closeTimer);
+        if (pinned) return;
+        closeTimer = setTimeout(() => {
+          if (
+            selected &&
+            (selected.matches(":hover") ||
+              selected === document.activeElement ||
+              popover.matches(":hover") ||
+              popover.contains(document.activeElement))
+          )
+            return;
+          hidePopover();
+        }, 150);
+      }
+      function showDay(platform, day, button, pin = false) {
+        clearTimeout(closeTimer);
+        if (!pin && pinned) return;
+        if (pin && pinned && selected === button) {
+          hidePopover();
+          return;
+        }
+        if (selected === button && !popover.hidden) {
+          pinned = pin;
+          return;
+        }
+        hidePopover();
         selected = button;
+        pinned = pin;
         button.classList.add("selected");
-        const title = element("div", undefined, "detail-title");
-        title.append(
+        button.setAttribute("aria-expanded", "true");
+        document.getElementById("popover-title").textContent = day.date;
+        document.getElementById("popover-platform").textContent = platform.name;
+        const summary = element("div", undefined, "popover-summary");
+        summary.append(
           element("i", undefined, "swatch " + day.status),
-          element("span", platform.name + " · " + day.date + " · " + labels[day.status]),
+          element("span", labels[day.status], "popover-status"),
         );
-        details.replaceChildren(
-          title,
-          element(
-            "p",
-            day.detail +
-              (day.status === "no_task" ? "" : " · 发布尝试 " + day.attemptCount + " 次"),
-          ),
-        );
+        if (day.status !== "no_task")
+          summary.append(
+            element("span", "发布尝试 " + day.attemptCount + " 次", "popover-attempts"),
+          );
+        popoverContent.replaceChildren(summary, element("p", day.detail, "popover-description"));
         if (day.canonicalUrl) {
           try {
             const url = new URL(day.canonicalUrl);
             if (url.protocol === "https:" || url.protocol === "http:") {
-              const link = element("a", "查看平台文章 ↗");
+              const link = element("a", "查看平台文章 ↗", "popover-link");
               link.href = url.href;
               link.target = "_blank";
               link.rel = "noopener noreferrer";
-              details.append(link);
+              popoverContent.append(link);
             }
           } catch {}
         }
+        popover.hidden = false;
+        positionPopover();
       }
+      popover.addEventListener("pointerenter", () => clearTimeout(closeTimer));
+      popover.addEventListener("pointerleave", schedulePopoverClose);
+      popover.addEventListener("focusin", () => clearTimeout(closeTimer));
+      popover.addEventListener("focusout", schedulePopoverClose);
+      function closeAndRestoreFocus() {
+        if (selected) selected.focus({ preventScroll: true });
+        hidePopover();
+      }
+      document.getElementById("popover-close").addEventListener("click", closeAndRestoreFocus);
+      document.addEventListener("pointerdown", (event) => {
+        if (selected && !selected.contains(event.target) && !popover.contains(event.target))
+          hidePopover();
+      });
+      document.addEventListener("focusin", (event) => {
+        if (selected && event.target !== selected && !popover.contains(event.target)) hidePopover();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !popover.hidden) {
+          event.preventDefault();
+          closeAndRestoreFocus();
+        }
+      });
+      scroller.addEventListener("scroll", hidePopover);
+      window.addEventListener("scroll", hidePopover);
       function render(result) {
         const snapshot = result.snapshot;
         if (!snapshot) throw new Error("unavailable");
-        const expectedThroughDate = new Date(Date.now() + 8 * 3600000 - 86400000).toISOString().slice(0, 10);
+        const expectedThroughDate = new Date(Date.now() + 8 * 3600000 - 86400000)
+          .toISOString()
+          .slice(0, 10);
         warning.hidden = !result.stale && snapshot.throughDate === expectedThroughDate;
         warning.textContent = "数据更新暂未完成，当前显示上次统计。请留意最后更新时间。";
         if (generatedAt === snapshot.generatedAtMs) return;
@@ -421,9 +752,8 @@
         }).format(snapshot.generatedAtMs);
         document.getElementById("range").textContent =
           snapshot.fromDate + " — " + snapshot.throughDate;
+        hidePopover();
         chart.replaceChildren();
-        selected = null;
-        details.replaceChildren(element("p", "将鼠标移到色块上，或点击查看当天的发布详情。"));
         for (const platform of snapshot.platforms) {
           const row = element("div", undefined, "row");
           const cells = element("div", undefined, "cells");
@@ -435,11 +765,23 @@
               "aria-label",
               platform.name + " " + day.date + " " + labels[day.status],
             );
-            button.title = day.date + " · " + labels[day.status];
-            const show = () => showDay(platform, day, button);
-            button.addEventListener("mouseenter", show);
-            button.addEventListener("focus", show);
-            button.addEventListener("click", show);
+            button.setAttribute("aria-haspopup", "dialog");
+            button.setAttribute("aria-controls", "status-popover");
+            button.setAttribute("aria-expanded", "false");
+            button.addEventListener("pointerenter", (event) => {
+              if (event.pointerType !== "touch") showDay(platform, day, button);
+            });
+            button.addEventListener("pointerleave", schedulePopoverClose);
+            button.addEventListener("focus", () => {
+              pinned = false;
+              showDay(platform, day, button);
+            });
+            button.addEventListener("blur", schedulePopoverClose);
+            button.addEventListener("click", (event) => {
+              showDay(platform, day, button, true);
+              if (event.detail === 0 && !popover.hidden)
+                (popover.querySelector("a") || document.getElementById("popover-close")).focus();
+            });
             cells.append(button);
           }
           const latest = platform.days[platform.days.length - 1];
@@ -474,7 +816,10 @@
       }
       refresh();
       setInterval(refresh, 60000);
-      window.addEventListener("resize", showLatestDates);
+      window.addEventListener("resize", () => {
+        hidePopover();
+        showLatestDates();
+      });
       document.addEventListener("visibilitychange", () => {
         if (!document.hidden) refresh();
       });

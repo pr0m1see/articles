@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>飞函 · 文章发布状态</title>
+    <style>
+      :root {
+        font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "PingFang SC",
+          "Microsoft YaHei",
+          sans-serif;
+        color: #25332e;
+        background: #f7f8f6;
+        font-synthesis: none;
+        --green: #3b9d76;
+        --yellow: #e0ac43;
+        --red: #d76a64;
+        --gray: #e5e8e4;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      main {
+        max-width: 1064px;
+        margin: 0 auto;
+        padding: 56px 24px 32px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin-bottom: 46px;
+      }
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 43px;
+        height: 43px;
+        border-radius: 12px;
+        background: #254b3d;
+        color: white;
+        font-size: 21px;
+        font-weight: 600;
+      }
+      .brand {
+        font-size: 19px;
+        font-weight: 650;
+        letter-spacing: 0.04em;
+      }
+      .internal {
+        text-decoration: none;
+        margin-left: auto;
+        color: #79857c;
+        font-size: 12px;
+        border: 1px solid #dce3dc;
+        border-radius: 20px;
+        padding: 6px 11px;
+      }
+      h1 {
+        font-size: 32px;
+        font-weight: 650;
+        letter-spacing: -0.04em;
+        margin: 0 0 12px;
+      }
+      .subtitle {
+        color: #7b857e;
+        font-size: 14px;
+        line-height: 1.8;
+        margin: 0;
+      }
+      .intro {
+        margin-bottom: 30px;
+      }
+      .update {
+        margin: 20px 0 0;
+        color: #7b857e;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+      .update strong {
+        color: #4a5c51;
+        font-weight: 500;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e0e5df;
+        border-radius: 13px;
+        box-shadow: 0 2px 8px #263e2c03;
+      }
+      .card-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 25px 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .range {
+        font-size: 11px;
+        font-weight: 400;
+        color: #8a938d;
+        font-variant-numeric: tabular-nums;
+      }
+      .scroll {
+        overflow-x: auto;
+        padding: 8px 25px 0;
+      }
+      .chart {
+        min-width: 760px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 100px minmax(0, 1fr) 88px;
+        align-items: center;
+        gap: 20px;
+        padding: 23px 0;
+        border-bottom: 1px solid #eff1ed;
+      }
+      .platform {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: white;
+        font-size: 14px;
+        font-weight: 550;
+      }
+      .cells {
+        display: grid;
+        grid-template-columns: repeat(90, minmax(0, 1fr));
+        gap: 3px;
+      }
+      .day {
+        height: 32px;
+        min-width: 0;
+        border: 0;
+        border-radius: 2px;
+        cursor: pointer;
+        padding: 0;
+        transition: opacity 0.12s;
+      }
+      .day:hover {
+        opacity: 0.65;
+      }
+      .day:focus-visible,
+      .day.selected {
+        outline: 2px solid #253e30;
+        outline-offset: 2px;
+        position: relative;
+        z-index: 1;
+      }
+      .success {
+        background: var(--green);
+      }
+      .recovered {
+        background: var(--yellow);
+      }
+      .unsuccessful {
+        background: var(--red);
+      }
+      .no_task {
+        background: var(--gray);
+      }
+      .label {
+        background: transparent;
+        font-size: 12px;
+        text-align: right;
+        white-space: nowrap;
+      }
+      .label.success {
+        color: #348764;
+      }
+      .label.recovered {
+        color: #af7d1a;
+      }
+      .label.unsuccessful {
+        color: #b65550;
+      }
+      .label.no_task {
+        color: #90988f;
+      }
+      .axis {
+        display: flex;
+        justify-content: space-between;
+        margin: 14px 108px 19px 120px;
+        color: #919a92;
+        font-size: 11px;
+      }
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px 23px;
+        padding: 20px 25px;
+        border-top: 1px solid #eff1ed;
+        font-size: 12px;
+        color: #748077;
+      }
+      .legend span {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .swatch {
+        width: 9px;
+        height: 9px;
+        border-radius: 2px;
+        display: inline-block;
+        flex: none;
+      }
+      .details {
+        min-height: 106px;
+        padding: 22px 25px;
+        border-top: 1px solid #eff1ed;
+        background: #fcfdfb;
+        border-radius: 0 0 13px 13px;
+      }
+      .details p {
+        margin: 6px 0;
+        color: #7b857e;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .detail-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 13px;
+        font-weight: 550;
+      }
+      .details a {
+        display: inline-block;
+        color: #367b5d;
+        font-size: 12px;
+        text-underline-offset: 3px;
+        margin-top: 7px;
+      }
+      .warning {
+        border: 1px solid #eedcb2;
+        background: #fcf7ea;
+        color: #8f712f;
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1.7;
+        padding: 12px 16px;
+        margin: 0 0 20px;
+      }
+      .empty {
+        padding: 35px 0;
+        color: #8a938d;
+        font-size: 13px;
+        text-align: center;
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 21px 2px;
+        color: #929c93;
+        font-size: 11px;
+        line-height: 1.8;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      @media (max-width: 600px) {
+        main {
+          padding: 30px 16px;
+        }
+        header {
+          margin-bottom: 34px;
+        }
+        h1 {
+          font-size: 28px;
+        }
+        .internal {
+          font-size: 10px;
+        }
+        .card-title {
+          padding: 20px 16px 0;
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 7px;
+        }
+        .scroll {
+          padding: 5px 16px 0;
+        }
+        .legend {
+          padding: 18px 16px;
+          gap: 13px 18px;
+        }
+        .details {
+          padding: 20px 16px;
+        }
+        .foot {
+          flex-direction: column;
+          gap: 2px;
+        }
+      }
+    </style>
+  </head>
+  <body data-status-source="./data.json">
+    <main>
+      <header>
+        <span class="mark" aria-hidden="true">飞</span><span class="brand">飞函</span
+        ><a class="internal" href="../">文章首页 ↗</a>
+      </header>
+      <section class="intro">
+        <h1>文章发布状态</h1>
+        <p class="subtitle">每一篇文章，每一个平台。查看飞函文章的每日发布记录。</p>
+        <p class="update">最后更新 <strong id="updated">—</strong> · 每日 00:00 更新（UTC+8）</p>
+      </section>
+      <p id="warning" class="warning" role="status" hidden></p>
+      <section class="card" aria-label="各平台每日发布记录">
+        <div class="card-title">
+          <span>最近 90 天</span><span class="range" id="range">统计至前一天</span>
+        </div>
+        <div class="scroll">
+          <div class="chart" id="chart"><p class="empty">正在读取发布记录…</p></div>
+        </div>
+        <div class="legend" aria-label="状态图例">
+          <span><i class="swatch success"></i>首次成功</span
+          ><span><i class="swatch recovered"></i>处理后成功</span
+          ><span><i class="swatch unsuccessful"></i>未确认成功</span
+          ><span><i class="swatch no_task"></i>无任务</span>
+        </div>
+        <div class="details" id="details" aria-live="polite">
+          <p>将鼠标移到色块上，或点击查看当天的发布详情。</p>
+        </div>
+      </section>
+      <footer class="foot">
+        <span>成功以发布验证和必要的发布后复审结果为准。</span
+        ><span>补发成功后，原日期的记录将在下次更新时修正。</span>
+      </footer>
+    </main>
+    <script>
+      const labels = {
+        success: "首次成功",
+        recovered: "处理后成功",
+        unsuccessful: "未确认成功",
+        no_task: "无任务",
+      };
+      const chart = document.getElementById("chart");
+      const scroller = document.querySelector(".scroll");
+      const warning = document.getElementById("warning");
+      const details = document.getElementById("details");
+      let generatedAt = null;
+      let selected = null;
+      function showLatestDates() {
+        if (window.matchMedia("(max-width: 600px)").matches) {
+          scroller.scrollLeft = scroller.scrollWidth;
+        }
+      }
+      function element(tag, text, className) {
+        const node = document.createElement(tag);
+        if (text !== undefined) node.textContent = text;
+        if (className) node.className = className;
+        return node;
+      }
+      function showDay(platform, day, button) {
+        if (selected) selected.classList.remove("selected");
+        selected = button;
+        button.classList.add("selected");
+        const title = element("div", undefined, "detail-title");
+        title.append(
+          element("i", undefined, "swatch " + day.status),
+          element("span", platform.name + " · " + day.date + " · " + labels[day.status]),
+        );
+        details.replaceChildren(
+          title,
+          element(
+            "p",
+            day.detail +
+              (day.status === "no_task" ? "" : " · 发布尝试 " + day.attemptCount + " 次"),
+          ),
+        );
+        if (day.canonicalUrl) {
+          try {
+            const url = new URL(day.canonicalUrl);
+            if (url.protocol === "https:" || url.protocol === "http:") {
+              const link = element("a", "查看平台文章 ↗");
+              link.href = url.href;
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
+              details.append(link);
+            }
+          } catch {}
+        }
+      }
+      function render(result) {
+        const snapshot = result.snapshot;
+        if (!snapshot) throw new Error("unavailable");
+        const expectedThroughDate = new Date(Date.now() + 8 * 3600000 - 86400000).toISOString().slice(0, 10);
+        warning.hidden = !result.stale && snapshot.throughDate === expectedThroughDate;
+        warning.textContent = "数据更新暂未完成，当前显示上次统计。请留意最后更新时间。";
+        if (generatedAt === snapshot.generatedAtMs) return;
+        generatedAt = snapshot.generatedAtMs;
+        document.getElementById("updated").textContent = new Intl.DateTimeFormat("zh-CN", {
+          timeZone: "Asia/Singapore",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hourCycle: "h23",
+        }).format(snapshot.generatedAtMs);
+        document.getElementById("range").textContent =
+          snapshot.fromDate + " — " + snapshot.throughDate;
+        chart.replaceChildren();
+        selected = null;
+        details.replaceChildren(element("p", "将鼠标移到色块上，或点击查看当天的发布详情。"));
+        for (const platform of snapshot.platforms) {
+          const row = element("div", undefined, "row");
+          const cells = element("div", undefined, "cells");
+          cells.setAttribute("aria-label", platform.name + "的每日发布记录");
+          for (const day of platform.days) {
+            const button = element("button", undefined, "day " + day.status);
+            button.type = "button";
+            button.setAttribute(
+              "aria-label",
+              platform.name + " " + day.date + " " + labels[day.status],
+            );
+            button.title = day.date + " · " + labels[day.status];
+            const show = () => showDay(platform, day, button);
+            button.addEventListener("mouseenter", show);
+            button.addEventListener("focus", show);
+            button.addEventListener("click", show);
+            cells.append(button);
+          }
+          const latest = platform.days[platform.days.length - 1];
+          row.append(
+            element("span", platform.name, "platform"),
+            cells,
+            element("span", labels[latest.status], "label " + latest.status),
+          );
+          chart.append(row);
+        }
+        const axis = element("div", undefined, "axis");
+        axis.append(element("span", snapshot.fromDate), element("span", snapshot.throughDate));
+        chart.append(axis);
+        showLatestDates();
+      }
+      async function refresh() {
+        try {
+          const response = await fetch(document.body.dataset.statusSource, { cache: "no-store" });
+          if (!response.ok) throw new Error("unavailable");
+          render(await response.json());
+        } catch {
+          warning.hidden = false;
+          warning.textContent =
+            generatedAt === null
+              ? "暂时无法获取发布统计，请稍后再试。"
+              : "暂时无法刷新，当前显示上次加载的统计。";
+          if (generatedAt === null)
+            chart.replaceChildren(element("p", "发布记录暂不可用", "empty"));
+        }
+      }
+      refresh();
+      setInterval(refresh, 60000);
+      window.addEventListener("resize", showLatestDates);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) refresh();
+      });
+    </script>
+  </body>
+</html>

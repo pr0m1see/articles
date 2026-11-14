@@ -10,7 +10,8 @@
 
 ```text
 site/
-  index.html               # 文章入口；当前尚无文章
+  index.html               # 文章入口
+  status/                  # 发布状态页及每日统计快照，由 Content Bot 自动维护
   404.html                 # 页面不存在时的提示
   assets/styles.css        # 首页和文章共享的阅读样式
   a/<revision_id>/
@@ -40,7 +41,13 @@ Content Bot 导出器还读取 `templates/index.html` 和 `templates/card.html`�
 
 ## 当前接入状态
 
-仓库已提供静态首页、文章模板、阅读样式和部署工作流。Markdown 导出、图片压缩、自动上传及飞函按钮由后续 Content Bot 接入实现；本仓库当前没有真实文章。
+Content Bot 已接入 Markdown 导出、WebP 图片、文章自动上传和飞函预览按钮，文章首页随目录更新。发布状态页由同一 Content Bot 服务维护。
+
+## 发布状态页
+
+[查看发布状态](https://pr0m1see.github.io/articles/status/)。页面展示七个平台最近 90 个完整自然日的发布记录：首次成功为绿，处理后成功为黄，未确认成功为红，没有任务为灰。
+
+Content Bot 在 Asia/Singapore 每天 00:00 重新统计并提交 `site/status/index.html` 和 `site/status/data.json`，沿用本仓库的 Pages 部署。统计只包含安全状态说明和公开文章链接；没有凭据、账号或任务身份。页面与数据由 Content Bot 状态页模块生成，样式和数据格式应在 Content Bot 维护，不手工改写生成文件。首页入口同时保存在 `templates/index.html`，后续文章上传不会移除它。
 
 ## 本地预览
 

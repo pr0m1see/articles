@@ -60,7 +60,7 @@
         font-weight: 650;
         letter-spacing: 0.04em;
       }
-      .internal {
+      .home-link {
         text-decoration: none;
         margin-left: auto;
         color: #79857c;
@@ -288,7 +288,7 @@
         h1 {
           font-size: 28px;
         }
-        .internal {
+        .home-link {
           font-size: 10px;
         }
         .card-title {
@@ -318,7 +318,7 @@
     <main>
       <header>
         <span class="mark" aria-hidden="true">飞</span><span class="brand">飞函</span
-        ><a class="internal" href="../">文章首页 ↗</a>
+        ><a class="home-link" href="../">文章首页 ↗</a>
       </header>
       <section class="intro">
         <h1>文章发布状态</h1>
@@ -458,7 +458,7 @@
       async function refresh() {
         try {
           const source = document.body.dataset.statusSource;
-          const url = source === "./data.json" ? source + "?t=" + Math.floor(Date.now() / 60000) : source;
+          const url = source + "?t=" + Math.floor(Date.now() / 60000);
           const response = await fetch(url, { cache: "no-store" });
           if (!response.ok) throw new Error("unavailable");
           render(await response.json());

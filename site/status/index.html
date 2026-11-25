@@ -543,7 +543,7 @@
         </div>
       </section>
       <footer class="foot">
-        <span>成功以发布验证和必要的发布后复审结果为准。飞函官网的成功表示已推送到 Gitea 仓库，暂未部署。</span
+        <span>成功以发布验证和必要的发布后复审结果为准。</span
         ><span>补发成功后，原日期的记录将在下次更新时修正。</span>
       </footer>
     </main>
@@ -689,7 +689,7 @@
         );
         if (day.status !== "no_task")
           summary.append(
-            element("span", (platform.id === "feihan_blog" ? "推送尝试 " : "发布尝试 ") + day.attemptCount + " 次", "popover-attempts"),
+            element("span", "发布尝试 " + day.attemptCount + " 次", "popover-attempts"),
           );
         popoverContent.replaceChildren(summary, element("p", day.detail, "popover-description"));
         if (day.canonicalUrl) {

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="跨时区交接容易让接手人陷入消息追溯。本文用一份持续更新的交接记录，讲清状态、阻塞、责任人与下一步，并说明如何借助飞函承接沟通和资料。">
+    <title>跨时区项目组交接事项，怎样让下一位负责人看清最新进展 · 飞函文章</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  <meta name="content-bot-revision" content="rev_01M88DRN6AAQ6Z1B9E187WP6F9">
+<meta name="content-bot-fingerprint" content="cbf-v2:sha256:d65f86eb12d844c475680e4647c288308be162724b9e9a737ca372ac6c7e047a">
+</head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="../../" aria-label="飞函文章首页"><img src="../../assets/feihan-mark.png" width="28" height="28" alt=""><span>飞函</span></a>
+        <a class="header-link" href="../../">全部文章 <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <nav class="resource-nav" aria-label="资源导航">
+      <div class="shell nav-inner"><a href="../../">飞函资源</a><a href="../../">Articles</a></div>
+    </nav>
+    <main class="reading-page">
+      <article>
+        <header class="article-header">
+          <p class="article-kicker"><img src="../../assets/article-icon.svg" width="16" height="16" alt="">Article · 飞函</p>
+          <h1>跨时区项目组交接事项，怎样让下一位负责人看清最新进展</h1>
+        </header>
+        <div class="prose"><p>北京的研发负责人结束一天工作时，欧洲的测试同事刚开始处理问题。如果交接只留下一句“已经沟通，继续跟进”，接手人仍要翻聊天记录、核对文件版本，再猜测谁在等待谁。时间花在还原现场上，真正需要推进的事项就会被耽搁。</p>
+<p>跨时区项目组需要的交接，不是把一天的消息压缩成一段话，而是让下一位负责人打开记录后，能立即回答三个问题：<strong>现在到哪一步、卡在哪里、我接下来做什么。</strong></p>
+<h2>把“最新进展”写成可接手的状态</h2>
+<p>每个待交接事项保留一条持续更新的记录，约定由当前负责人在离线前更新。内容可以很短，但要有明确字段：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>接手人需要看到什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>当前状态</td>
+<td>已完成什么，哪些结果还在等待确认</td>
+</tr>
+<tr>
+<td>最近变化</td>
+<td>本轮新增的结论及更新时间，时间注明时区</td>
+</tr>
+<tr>
+<td>阻塞与依赖</td>
+<td>卡在哪个问题，正在等待谁提供什么</td>
+</tr>
+<tr>
+<td>下一步</td>
+<td>具体动作、执行人和预期时间</td>
+</tr>
+<tr>
+<td>依据材料</td>
+<td>对应的文件、讨论结论或问题记录的位置</td>
+</tr>
+</tbody>
+</table>
+<p>例如，“测试还没过”很难接手；“截至北京时间 18:00，登录流程已复测通过，文件上传失败仍待研发定位；欧洲测试负责人明日 09:00（当地时间）按更新后的构建版本重试，并在同一记录中补充结果”则能直接指导下一步。状态变化时更新原记录，并标明变化时间，避免多份交接消息相互冲突。</p>
+<h2>让下一位负责人确认责任边界</h2>
+<p>交接不等于把消息发出去。当前负责人离线前，应指出尚未完成的动作和对应责任人；接手人上线后，在同一讨论上下文中确认已接手，并说明首次检查的时间。如果发现依赖材料缺失或责任人不清，应先澄清，再继续推进。</p>
+<p>对跨越多个工作日的事项，还要约定谁维护主记录。会议结论、临时讨论和文件更新都可以发生在不同位置，但最终状态应回到这条记录。这样，接手人不必从消息先后顺序推断哪个说法有效。</p>
+<p><img src="./assets/handoff_flow.webp" alt="事项状态、阻塞和资料线索随交接传递给下一位负责人"></p>
+<h2>用飞函承接沟通，保留资料线索</h2>
+<p>这套交接方法可以放在团队已有的协作流程中执行。飞函的即时通讯支持历史消息同步、全局搜索和重要消息，适合让交接讨论留在可追溯的沟通上下文里；需要共同查看的文件，可放在网盘共享空间，并按成员或部门设置共享权限。交接记录中写清文件位置和版本，接手人就能从状态直接找到依据。</p>
+<p>工具负责承接消息和资料，团队仍需约定更新时点、记录格式与接手确认动作。尤其在多人轮班时，“谁更新状态、谁确认接手”比多发一条提醒更能减少责任空档。</p>
+<p>可以先从一个持续推进的事项试行：每次下线前更新状态和下一步，每次上线后确认接手；运行几轮后，检查接手人是否还需要反复追问进展。如果仍要翻查大量消息，就补齐记录中的缺口，而不是继续增加交接消息的数量。</p>
+</div>
+      </article>
+      <a class="back-link" href="../../">← 返回文章首页</a>
+    </main>
+    <footer class="site-footer"><div class="shell footer-inner"><span>飞函</span><span>Articles</span></div></footer>
+  </body>
+</html>
